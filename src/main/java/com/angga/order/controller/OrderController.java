@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.angga.order.entity.Order;
 import com.angga.order.service.OrderService;
+import com.angga.order.vo.ResponseTemplate;
 
 @RestController
 @RequestMapping("/api/order")
@@ -29,8 +30,8 @@ public class OrderController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Order> getOrderById(@PathVariable("id") Long id) {
-    return ResponseEntity.ok(orderService.getOrderById(id));
+  public List<ResponseTemplate> getOrderEntityById(@PathVariable("id") Long id) {
+    return orderService.getOrderWithProdukById(id);
   }
 
   @PostMapping
